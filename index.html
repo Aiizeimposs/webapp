@@ -3,34 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>เปิด Web App</title>
+  <title>โหลด Web App</title>
   <style>
     body {
-      font-family: sans-serif;
-      text-align: center;
-      padding: 50px;
-      background-color: #f7f7f7;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
-    a.button {
-      display: inline-block;
-      padding: 15px 25px;
-      font-size: 18px;
-      color: white;
-      background-color: #007bff;
-      text-decoration: none;
-      border-radius: 8px;
-      transition: background-color 0.3s;
-    }
-    a.button:hover {
-      background-color: #0056b3;
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
     }
   </style>
 </head>
 <body>
-  <h1>เปิด Web App สำหรับยื่นใบลา</h1>
-  <p>กดปุ่มด้านล่างเพื่อเข้าสู่ระบบลาออนไลน์</p>
-  <a href="https://script.google.com/macros/s/AKfycbwgwqy0DpRD4bIsR6Womk5aVMVc82LU9yey924uYbUOKdcXwAYZtRArAoP2d783MrkH/exec" class="button" target="_blank">
-    👉 เปิด Web App
-  </a>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const appUrl = params.get('apps');
+    if (appUrl) {
+      // สร้าง iframe และแสดง Web App จากลิงก์
+      const iframe = document.createElement('iframe');
+      iframe.src = appUrl;
+      document.body.appendChild(iframe);
+    } else {
+      document.body.innerHTML = "<h2>ไม่พบลิงก์ Web App ที่ต้องการโหลด</h2>";
+    }
+  </script>
 </body>
 </html>
