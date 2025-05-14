@@ -1,1 +1,36 @@
-
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>โหลด Web App</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const appUrl = params.get('apps');
+    if (appUrl) {
+      // สร้าง iframe และแสดง Web App จากลิงก์
+      const iframe = document.createElement('iframe');
+      iframe.src = appUrl;
+      document.body.appendChild(iframe);
+    } else {
+      document.body.innerHTML = "<h2>ไม่พบลิงก์ Web App ที่ต้องการโหลด</h2>";
+    }
+  </script>
+</body>
+</html>
